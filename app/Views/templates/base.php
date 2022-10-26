@@ -92,7 +92,7 @@
 <?= $this->renderSection('content') ?>
         </main>
         <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKK6yNjFVhQsE3pl2KkURu4RWQSy8QHFs&callback=initMap&v=weekly"
+                src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAPS_API_KEY') ?>&callback=initMap&v=weekly"
                 defer
         ></script>
     </body>

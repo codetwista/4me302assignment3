@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 
 class NewsController extends BaseController
 {
@@ -30,7 +29,8 @@ class NewsController extends BaseController
         // Render news view
         return view('researcher/news', [
             'title' => 'Researcher news',
-            'news' => $rssFeed
+            'news' => $rssFeed,
+            'uri' => $this->uri
         ]);
     }
 }
