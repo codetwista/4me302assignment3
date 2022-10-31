@@ -13,7 +13,7 @@
                     <div class="is-flex is-flex-direction-column is-justify-content-center box form-container">
                         <h1>PD patients management system</h1>
                         <h2>Register your profile</h2>
-                        <p>Use your social handle (name or email)</p>
+                        <p>Use your social handle username and email</p>
                         <?php if (! empty($validation)): ?>
                             <div class="notification is-danger is-light my-3">
                                 <h2 class="mb-2">Please review your submission!</h2>

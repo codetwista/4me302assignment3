@@ -25,13 +25,24 @@ class DashboardController extends BaseController
                 'patients' => $this->db->table('user, role')
                     ->where('user.Role_IDrole = role.type')
                     ->where('user.Role_IDrole', 1)
+                    ->orderBy('userID', 'ASC')
                     ->get()
                     ->getResult(),
                 'userData' => $userData,
-                'uri' => $this->uri
+                'uri' => $this->uri,
             ]);
         }
     
         return redirect()->to(base_url('login'));
+    }
+    
+    public function plotSpiral()
+    {
+        
+        
+        return view('physician/graph', [
+            'title' => 'Graph',
+            'data' => $data
+        ]);
     }
 }

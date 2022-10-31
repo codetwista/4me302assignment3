@@ -43,9 +43,13 @@ $routes->get( 'login', 'UserController::logIn');
 $routes->get('logout', 'UserController::logOut');
 $routes->match(['get', 'post'], 'register', 'UserController::register');
 
-$routes->get('news', 'NewsController::index');
+$routes->get('researcher/news', 'NewsController::index');
 
-$routes->get('researcher/map', 'ResearcherController::index');
+$routes->get('researcher/map', 'ResearcherController::map');
+$routes->get('(:segment)/patient', 'ResearcherController::getPatient');
+$routes->get('researcher/patient/(:segment)', 'ResearcherController::getPatient/$1');
+$routes->get('researcher/notes/(:segment)', 'ResearcherController::postNote/$1');
+$routes->get('physician/patient/(:segment)', 'PhysicianController::getPatient/$1');
 
 $routes->get('github', 'GitHubAuthController::index');
 $routes->get('github/login', 'GitHubAuthController::login');

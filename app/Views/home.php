@@ -12,13 +12,13 @@
                 <div class="hero-body is-flex is-justify-content-center is-align-items-center">
                     <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center box
                     mb-6 form-container">
-                        <h1>PD patients management system</h1>
+                        <h1>PD patients data management system</h1>
                         <div class="is-flex is-flex-direction-column p-3">
                             <a class="mb-3 button is-danger is-fullwidth" href="register">
-                                Register <i class="las la-arrow-right ml-2"></i>
+                                <i class="las la-user-plus mr-2"></i> Register <i class="las la-arrow-right ml-2"></i>
                             </a>
                             <a class="button is-info is-fullwidth" href="login">
-                                Login <i class="las la-arrow-right ml-2"></i>
+                                <i class="las la-user mr-2"></i>Login <i class="las la-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>

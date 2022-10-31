@@ -13,7 +13,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= esc($title) ?> - PD Patients Management System</title>
+    <title><?= esc($title) ?> - PD Patients Data Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
@@ -29,9 +29,9 @@
         <header>
             <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand pl-2">
-                    <a class="navbar-item" href="<?= base_url() ?>">
+                    <a class="navbar-item" href="<?php if (session()->has('profile')) echo base_url(session()->profile) ?>">
                         <!--<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo">-->
-                        <span class="has-text-weight-bold">PD Patients Management System</span>
+                        <span class="has-text-weight-bold">PD Patients Data Management System</span>
                     </a>
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
@@ -46,19 +46,26 @@
                         <div class="navbar-item">
                             Hej <?= ucwords(session()->profile) ?>! You're logged in.
                         </div>
+                        
+                        <?php if ($uri->getSegment(2) != ''): ?>
+                        
+                        <div class="navbar-item px-1">
+                            <a class="button is-info is-light" href="<?= base_url(session()->profile) ?>">
+                                <i class="las la-undo ml-0 mr-2"></i>Dashboard
+                            </a>
+                        </div>
+                        <?php endif ?>
+                        
                         <?php if (session()->profile === 'researcher'): ?>
                         
-                        <?php if (current_url() !== base_url('news')): ?>
-    
-                            <div class="navbar-item px-1">
-                                <a class="button is-info is-light" href="<?= base_url('news') ?>">Latest news</a>
-                            </div>
-                        <?php endif ?>
+                        <div class="navbar-item px-1">
+                            <a class="button is-info" href="<?= base_url('researcher/news') ?>">Latest news</a>
+                        </div>
                         
                         <?php endif ?>
                         
                         <div class="navbar-item pl-1 pr-0">
-                            <a class="button is-danger is-light" href="<?= base_url('logout') ?>">
+                            <a class="button is-danger" href="<?= base_url('logout') ?>">
                                 Log out
                             </a>
                         </div>
@@ -88,12 +95,18 @@
                 </div>
             </nav>
         </header>
-        <main>
+        <main class="mt-6">
 <?= $this->renderSection('content') ?>
         </main>
-        <script
-                src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAPS_API_KEY') ?>&callback=initMap&v=weekly"
-                defer
-        ></script>
+        <?php if ($uri->getSegment(1) == 'physician' || $uri->getSegment(1) == 'researcher'): ?>
+        
+        <script src="<?= base_url('js/script.js') ?>"></script>
+        <?php endif ?>
+        <?php if (current_url() == base_url('researcher/map')): ?>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAPS_API_KEY') ?>&callback=initMap&v=weekly" defer>
+        </script>
+        <?php endif ?>
+    
     </body>
 </html>

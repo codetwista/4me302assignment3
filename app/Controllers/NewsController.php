@@ -30,7 +30,7 @@ class NewsController extends BaseController
         return view('researcher/news', [
             'title' => 'Researcher news',
             'news' => $rssFeed,
-            'uri' => $this->uri
+            'uri' => $this->uri->setSilent()
         ]);
     }
 }

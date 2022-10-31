@@ -9,7 +9,7 @@
 <?= $this->extend('templates/base')?>
 <?= $this->section('content') ?>
             <section class="section">
-                <div class="container">
+                <div class="">
                     <h1>Patient's location overview</h1>
                     <div id="map"></div>
                 </div>

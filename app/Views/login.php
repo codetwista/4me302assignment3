@@ -12,7 +12,7 @@
                 <div class="hero-body is-flex is-justify-content-center is-align-items-center">
                     <div class="is-flex is-flex-direction-column is-justify-content-center
                 is-align-items-center box mb-6 form-container">
-                        <h1>PD patients management system</h1>
+                        <h1>PD patients data management system</h1>
                         <h2 class="mb-5">Log in</h2>
                         <?php if (session()->getFlashdata('status')): ?>
                             <?= session()->getFlashdata('status') ?>

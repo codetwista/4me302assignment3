@@ -10,12 +10,16 @@ class UserController extends BaseController
      */
     public function index()
     {
+        // If user is not logged in, redirect to log in view
+        if (! $this->session->has('profile')) return redirect()->to(base_url('login'));
+        
         // If user has an active session, log user out
         if ($this->session->has('googleAccessToken') || $this->session->has('gitHubAccessToken') ||
             $this->session->has('twitterAccessToken')) return redirect()->to(base_url('logout'));
         
         return view('users', [
             'title' => 'Users',
+            'uri' => $this->uri,
             'users' => $this->db->table('user')
                 ->join('role', 'role.roleID = user.Role_IDrole')
                 ->join('organization', 'organization.organizationID = user.Organization')
@@ -105,7 +109,7 @@ class UserController extends BaseController
             'title' => 'Register',
             'roles' => $this->db->table('role')->get()->getResult(),
             'validation' => $this->validator,
-            'uri' => $this->uri
+            'uri' => $this->uri->setSilent()
         ]);
     }
     
@@ -133,7 +137,7 @@ class UserController extends BaseController
         return view('login', [
             'title' => 'Log in',
             'data' => $data,
-            'uri' => $this->uri
+            'uri' => $this->uri->setSilent()
         ]);
     }
     

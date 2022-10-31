@@ -1,6 +1,7 @@
 {
     "require": {
         "google/apiclient": "^2.12.1",
-        "abraham/twitteroauth": "^4.0"
+        "abraham/twitteroauth": "^4.0",
+        "amenadiel/jpgraph": "^4"
     }
 }
