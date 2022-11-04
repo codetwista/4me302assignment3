@@ -48,7 +48,10 @@ $routes->get('researcher/news', 'NewsController::index');
 $routes->get('researcher/map', 'ResearcherController::map');
 $routes->get('(:segment)/patient', 'ResearcherController::getPatient');
 $routes->get('researcher/patient/(:segment)', 'ResearcherController::getPatient/$1');
-$routes->get('researcher/notes/(:segment)', 'ResearcherController::postNote/$1');
+$routes->match(['get'], 'researcher/notes/', 'ResearcherController::note/$1');
+$routes->match(['get', 'post'], 'researcher/notes/(:segment)', 'ResearcherController::note/$1');
+$routes->get('researcher/notes/(:segment)', 'ResearcherController::note/$1');
+$routes->match(['get', 'post'],'researcher/note', 'ResearcherController::postNote');
 $routes->get('physician/patient/(:segment)', 'PhysicianController::getPatient/$1');
 
 $routes->get('github', 'GitHubAuthController::index');

@@ -82,7 +82,7 @@
                                     </td>
                                     <td>
                                         <a class="button is-info is-light" href="<?= base_url('researcher/notes/' . $session->test_SessionID) ?>">
-                                            <i class="las la-notes-medical mr-2"></i>View notes
+                                            <i class="las la-notes-medical mr-2"></i>Notes
                                         </a>
                                     </td>
                                 </tr>

@@ -56,6 +56,7 @@ class TwitterAuthController extends BaseController
         
         if ($user = $this->db->table('user, role')->where('user.username', $twitterProfile->screen_name)->where('user.Role_IDrole = role.type')->get()->getRow()) {
             // Save user to session
+            $this->session->set('userID', $user->userID);
             $this->session->set('username', $user->username);
             $this->session->set('email', $user->email);
             $this->session->set('profile', $user->name);

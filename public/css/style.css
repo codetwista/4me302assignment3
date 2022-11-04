@@ -54,6 +54,13 @@ table .lar {
   padding: 5px 0;
   box-shadow: 0 3px 10px rgba(153, 153, 153, 0.15);
 }
+textarea {
+  font-family: inherit;
+  resize: none !important;
+}
 .nmt-5 {
   margin-top: -60px;
+}
+.is-small {
+  font-size: 14px;
 }

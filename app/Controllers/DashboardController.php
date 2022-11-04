@@ -28,6 +28,13 @@ class DashboardController extends BaseController
                     ->orderBy('userID', 'ASC')
                     ->get()
                     ->getResult(),
+                'patient' => $this->db->table('user, role')
+                    ->where('user.Role_IDrole = role.type')
+                    ->where('user.Role_IDrole', 1)
+                    ->where('user.username', $this->session->username)
+                    ->orderBy('userID', 'ASC')
+                    ->get()
+                    ->getRow(),
                 'userData' => $userData,
                 'uri' => $this->uri,
             ]);
