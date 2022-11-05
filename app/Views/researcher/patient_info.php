@@ -45,7 +45,11 @@
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Visualization</th>
+                                <?php if (session()->profile ==='researcher'): ?>
+                                
                                 <th>Notes</th>
+                                <?php endif ?>
+                                
                             </tr>
                             </thead>
                             <tbody>
@@ -80,11 +84,15 @@
                                             <button class="modal-close is-large" aria-label="close"></button>
                                         </div>
                                     </td>
+                                    <?php if (session()->profile ==='researcher'): ?>
+                                    
                                     <td>
                                         <a class="button is-info is-light" href="<?= base_url('researcher/notes/' . $session->test_SessionID) ?>">
                                             <i class="las la-notes-medical mr-2"></i>Notes
                                         </a>
                                     </td>
+                                    <?php endif ?>
+                                    
                                 </tr>
                             <?php endforeach ?>
         
